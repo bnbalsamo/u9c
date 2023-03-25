@@ -1,0 +1,8 @@
+pre-commit
+mypy
+black
+isort
+mkdocs
+mkdocstrings
+mkdocs-material
+mkdocstrings-python

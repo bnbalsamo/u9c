@@ -1,0 +1,12 @@
+site_name: u9c
+
+theme:
+  name: material
+plugins:
+- search
+- mkdocstrings
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences

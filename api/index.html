@@ -5064,7 +5064,7 @@ a conversation history automatically.</p>
 
   <div class="doc doc-contents ">
   
-      <p>Hash a human readable username to produce an appropriate user identifier</p>
+      <p>Hash a human readable username to produce a user identifier.</p>
 <p>This user identifier is meant to be transmitted to the OpenAI API in place
 of a human readable username.</p>
 
@@ -5241,7 +5241,13 @@ of a human readable username.</p>
       <p>A client for accessing the OpenAI API.</p>
 <p>This class is an async context manager, and should be used as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">with</span> <span class="n">OpenAiApiClient</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
-    <span class="n">model_names</span> <span class="o">=</span> <span class="k">await</span> <span class="n">api_client</span><span class="o">.</span><span class="n">list_model_names</span><span class="p">()</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">api_client</span><span class="o">.</span><span class="n">send_request</span><span class="p">(</span>
+        <span class="n">CreateChatCompletionRequest</span><span class="p">(</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Tell me a joke&quot;</span><span class="p">)],</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-3.5-turbo&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div>
 
   <p><strong>Parameters:</strong></p>
@@ -5458,6 +5464,10 @@ of a human readable username.</p>
 </h3>
 
   <div class="doc doc-contents ">
+  
+      <p>Wrapper classes for API requests and responses + their components.</p>
+<p>These classes provide input validation as well as some added
+functionality for certain messages.</p>
 
   
 
